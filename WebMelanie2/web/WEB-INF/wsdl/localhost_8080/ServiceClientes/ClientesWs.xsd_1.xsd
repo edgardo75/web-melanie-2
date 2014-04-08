@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://ejb.melani.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ejb.melani.com/">
+
+<xs:element name="notadepedido" type="tns:notadepedido"/>
+
+<xs:element name="porcentajes" type="tns:porcentajes"/>
+
+<xs:element name="tarjetasCreditoDebito" type="tns:tarjetasCreditoDebito"/>
+
+<xs:element name="tipostelefono" type="tns:tipostelefono"/>
+
+<xs:complexType name="clientes">
+<xs:complexContent>
+<xs:extension base="tns:personas">
+<xs:sequence>
+<xs:element name="fechaCarga" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="notadepedidoList" type="tns:notadepedido" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="totalCompras" type="xs:decimal" minOccurs="0"/>
+<xs:element name="totalEnPuntos" type="xs:integer" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="personas" abstract="true">
+<xs:sequence>
+<xs:element name="apellido" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="generos" type="tns:generos" minOccurs="0"/>
+<xs:element name="idPersona" type="xs:long" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="nrodocumento" type="xs:int" minOccurs="0"/>
+<xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+<xs:element name="personasDomicilioss" type="tns:personasDomicilios" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="personastelefonoss" type="tns:personastelefonos" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="pertype" type="xs:string" minOccurs="0"/>
+<xs:element name="tipodocumento" type="tns:tiposdocumento" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="notadepedido">
+<xs:sequence>
+<xs:element name="anticipo" type="xs:decimal" minOccurs="0"/>
+<xs:element name="anulado" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="cancelado" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="descuentoPesos" type="xs:decimal" minOccurs="0"/>
+<xs:element name="descuentonota" type="xs:decimal" minOccurs="0"/>
+<xs:element name="enefectivo" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="entregado" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="fecancelado" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fechaAnulado" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fechadecompra" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fechaentrega" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fkIdcliente" type="tns:personas" minOccurs="0"/>
+<xs:element name="fkidporcentajenotaId" type="tns:porcentajes" minOccurs="0"/>
+<xs:element name="horacompra" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="idTarjetaFk" type="tns:tarjetasCreditoDebito" minOccurs="0"/>
+<xs:element name="idUsuarioExpidioNota" type="xs:int" minOccurs="0"/>
+<xs:element name="idusuarioAnulado" type="xs:int" minOccurs="0"/>
+<xs:element name="idusuarioEntregado" type="xs:int" minOccurs="0"/>
+<xs:element name="idusuariocancelo" type="xs:int" minOccurs="0"/>
+<xs:element name="montoiva" type="xs:decimal" minOccurs="0"/>
+<xs:element name="montototalapagar" type="xs:decimal" minOccurs="0"/>
+<xs:element name="numerodecupon" type="xs:string" minOccurs="0"/>
+<xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+<xs:element name="pendiente" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="porcdesctotal" type="xs:decimal" minOccurs="0"/>
+<xs:element name="porcrecargo" type="xs:decimal" minOccurs="0"/>
+<xs:element name="recargo" type="xs:decimal" minOccurs="0"/>
+<xs:element name="saldo" type="xs:decimal" minOccurs="0"/>
+<xs:element name="stockfuturo" type="xs:int" minOccurs="0"/>
+<xs:element name="total" type="xs:decimal" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generos">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idGenero" type="xs:short" minOccurs="0"/>
+<xs:element name="personasCollection" type="tns:personas" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="personasDomicilios">
+<xs:sequence>
+<xs:element name="domicilioss" type="tns:domicilios" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaingresovivienda" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="personas" type="tns:personas" minOccurs="0"/>
+<xs:element name="personasdomiciliosPK" type="tns:personasdomiciliosPK" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="domicilios">
+<xs:sequence>
+<xs:element name="area" type="xs:string" minOccurs="0"/>
+<xs:element name="barrios" type="tns:barrios" minOccurs="0"/>
+<xs:element name="calles" type="tns:calles" minOccurs="0"/>
+<xs:element name="entrecalleycalle" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="idbarrio" type="tns:barrios" minOccurs="0"/>
+<xs:element name="idcalle" type="tns:calles" minOccurs="0"/>
+<xs:element name="idorientacion" type="tns:orientacion" minOccurs="0"/>
+<xs:element name="localidades" type="tns:localidades" minOccurs="0"/>
+<xs:element name="manzana" type="xs:string" minOccurs="0"/>
+<xs:element name="monoblock" type="xs:string" minOccurs="0"/>
+<xs:element name="numdepto" type="xs:int" minOccurs="0"/>
+<xs:element name="numero" type="xs:int"/>
+<xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+<xs:element name="orientacion" type="tns:orientacion" minOccurs="0"/>
+<xs:element name="personasDomicilioss" type="tns:personasDomicilios" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="piso" type="xs:string" minOccurs="0"/>
+<xs:element name="sector" type="xs:string" minOccurs="0"/>
+<xs:element name="torre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="barrios">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="domicilioss" type="tns:domicilios" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="calles">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="domicilioss" type="tns:domicilios" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="orientacion">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="domicilioss" type="tns:domicilios" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="localidades">
+<xs:sequence>
+<xs:element name="codigopostal" type="xs:int" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="domiciliosList" type="tns:domicilios" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="idLocalidad" type="xs:long" minOccurs="0"/>
+<xs:element name="provincias" type="tns:provincias" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="provincias">
+<xs:sequence>
+<xs:element name="codigo" type="xs:unsignedShort" minOccurs="0"/>
+<xs:element name="idProvincia" type="xs:short" minOccurs="0"/>
+<xs:element name="localidadesList" type="tns:localidades" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="provincia" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="personasdomiciliosPK">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="idPersona" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="personastelefonos">
+<xs:sequence>
+<xs:element name="detalles" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="xs:string" minOccurs="0"/>
+<xs:element name="idPersona" type="tns:personas" minOccurs="0"/>
+<xs:element name="personastelefonosPK" type="tns:personastelefonosPK" minOccurs="0"/>
+<xs:element name="telefonos" type="tns:telefonos" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="personastelefonosPK">
+<xs:sequence>
+<xs:element name="idClienteyapa" type="xs:long" minOccurs="0"/>
+<xs:element name="prefijo" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="telefonos">
+<xs:sequence>
+<xs:element name="idEmpresatelefonia" type="tns:empresaTelefonia" minOccurs="0"/>
+<xs:element name="idTipotelefono" type="tns:tipostelefono" minOccurs="0"/>
+<xs:element name="personastelefonosCollection" type="tns:personastelefonos" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="telefonosPK" type="tns:telefonosPK" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="empresaTelefonia">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="telefonosList" type="tns:telefonos" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="idEmpTelefonia" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tipostelefono">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idTipotel" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="telefonosPK">
+<xs:sequence>
+<xs:element name="idPrefijo" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tiposdocumento">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+<xs:element name="personasList" type="tns:personas" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="porcentajes">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idPorcentajes" type="xs:short" minOccurs="0"/>
+<xs:element name="valor" type="xs:double" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tarjetasCreditoDebito">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idtarjeta" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
