@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="WebMelanie2PU" transaction-type="JTA">
+    <jta-data-source>jdbc/_mysql2</jta-data-source>
+    <class>com.model.Barrios</class>
+    <class>com.model.Calles</class>
+    <class>com.model.Clientes</class>
+    <class>com.model.Detallesnotadepedido</class>
+    <class>com.model.Detallespresupuesto</class>
+    <class>com.model.Domicilios</class>
+    <class>com.model.Empleadoparttime</class>
+    <class>com.model.Empleados</class>
+    <class>com.model.Empresatelefonia</class>
+    <class>com.model.Entradasysalidascaja</class>
+    <class>com.model.Existenciasproductos</class>
+    <class>com.model.Formadepago</class>
+    <class>com.model.Fulltimeempleado</class>
+    <class>com.model.Generos</class>
+    <class>com.model.Historicodatoscliente</class>
+    <class>com.model.Historiconotapedido</class>
+    <class>com.model.Histpersonasdomicilios</class>
+    <class>com.model.Histpersonastelefonos</class>
+    <class>com.model.Imagenesproductos</class>
+    <class>com.model.Localidades</class>
+    <class>com.model.Notadepedido</class>
+    <class>com.model.Orientacion</class>
+    <class>com.model.Personas</class>
+    <class>com.model.Personasdomicilios</class>
+    <class>com.model.Personastelefonos</class>
+    <class>com.model.Porcentajes</class>
+    <class>com.model.Presupuestos</class>
+    <class>com.model.Productos</class>
+    <class>com.model.Provincias</class>
+    <class>com.model.Tarjetascreditodebito</class>
+    <class>com.model.Telefonos</class>
+    <class>com.model.Tiposdocumento</class>
+    <class>com.model.Tipostelefono</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <!--<property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.FirebirdPlatform"/>-->
+      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
+    </properties>
+  </persistence-unit>
+</persistence>
