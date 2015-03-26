@@ -28,8 +28,8 @@
     </target>
     <target name="wsimport-client-PresupuestoWs" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" destdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/192.168.1.100_8080/ServicesPresupuestos/PresupuestoWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.1.100:8080/ServicesPresupuestos/PresupuestoWs?WSDL" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/192.168.1.100_8080/ServicesPresupuestos/PresupuestoWs.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" destdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServicesPresupuestos/PresupuestoWs?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -44,8 +44,8 @@
     </target>
     <target name="wsimport-client-NotaPedidoWs" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/NotaPedidoWs"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/NotaPedidoWs" destdir="${build.generated.dir}/jax-wsCache/NotaPedidoWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/NotaPedidoWs/wsdl/192.168.1.100_8080/ServiceNotaPedido/NotaPedidoWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.1.100:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/NotaPedidoWs/wsdl/192.168.1.100_8080/ServiceNotaPedido/NotaPedidoWs.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/NotaPedidoWs" destdir="${build.generated.dir}/jax-wsCache/NotaPedidoWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/NotaPedidoWs/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/NotaPedidoWs/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/NotaPedidoWs"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -60,8 +60,8 @@
     </target>
     <target name="wsimport-client-BarriosWs" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/BarriosWs"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BarriosWs" destdir="${build.generated.dir}/jax-wsCache/BarriosWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/BarriosWs/wsdl/192.168.1.100_8080/ServiceBarrios/BarriosWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.1.100:8080/ServiceBarrios/BarriosWs?WSDL" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/BarriosWs/wsdl/192.168.1.100_8080/ServiceBarrios/BarriosWs.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BarriosWs" destdir="${build.generated.dir}/jax-wsCache/BarriosWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/BarriosWs/wsdl/localhost_8080/ServiceBarrios/BarriosWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServiceBarrios/BarriosWs?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/BarriosWs/wsdl/localhost_8080/ServiceBarrios/BarriosWs.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/BarriosWs"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">

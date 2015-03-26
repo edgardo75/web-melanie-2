@@ -6,7 +6,6 @@ package com.server;
 
 
 import com.melani.ejb.ServiceBarrios;
-import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,7 +34,7 @@ import org.xml.sax.SAXException;
  * @author win7
  */
 public class ShowReportBarrios extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.100_8080/ServiceBarrios/BarriosWs.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServiceBarrios/BarriosWs.wsdl")
     private ServiceBarrios service;
  
 
@@ -48,7 +47,7 @@ public class ShowReportBarrios extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */
+     */  
     
     private static final Logger logger = Logger.getLogger(ShowReportBarrios.class);
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -57,8 +56,8 @@ public class ShowReportBarrios extends HttpServlet {
         response.setHeader("Pragma","no-cache");
         response.setDateHeader("Expires", 0);        
         response.setContentType("application/pdf");        
-        String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        String reportFileName =pathActual+"reportAllBarrios.jasper";
+        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
+        //String reportFileName =pathActual+"reportAllBarrios.jasper";
         ServletOutputStream servletOutputStream =null;
         String xml = "";
         
@@ -107,12 +106,12 @@ public class ShowReportBarrios extends HttpServlet {
                                 byte[] bytes = null;
                             //----------------------------------------------------------------------------
                     try {
-                            bytes = JasperRunManager.runReportToPdf(reportFileName, null, xmlDataSource);
+                            bytes = JasperRunManager.runReportToPdf(Reportes.obtenerTodosBarrios(), null, xmlDataSource);
                             response.setContentType("application/pdf");
                             response.setContentLength(bytes.length);
                             servletOutputStream.write(bytes, 0, bytes.length);
                             servletOutputStream.flush();
-                            servletOutputStream.close();
+                            
                     } catch (JRException e) {
                             
                             // display stack trace in the browser
@@ -124,10 +123,9 @@ public class ShowReportBarrios extends HttpServlet {
                             logger.error(stringWriter.toString(), e);
                     }
            //-------------------------------------------------------------------------------
-        } finally {          
-         
-            servletOutputStream.close();
-        }
+        }catch(IOException e){
+            e.getLocalizedMessage();
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -167,27 +165,6 @@ public class ShowReportBarrios extends HttpServlet {
         } catch (JRException ex) {
             java.util.logging.Logger.getLogger(ShowReportBarrios.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-    private String searchAllBarrios() {
-        com.melani.ejb.BarriosWs port = service.getBarriosWsPort();
-        return port.searchAllBarrios();
-    }
-
-    private String searchAllBarrios_1() {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        com.melani.ejb.BarriosWs port = service.getBarriosWsPort();
-        return port.searchAllBarrios();
-    }
+    } 
+  
 }

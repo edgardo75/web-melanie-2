@@ -39,7 +39,7 @@ import org.xml.sax.SAXException;
  */
 @WebServlet(name = "ShowReportView", urlPatterns = {"/ShowReportView"})
 public class ShowReportView extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.100_8080/ServicesPresupuestos/PresupuestoWs.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl")
     private ServicesPresupuestos service;
 
     /**
@@ -54,14 +54,15 @@ public class ShowReportView extends HttpServlet {
      * @throws net.sf.jasperreports.engine.JRException
      * @throws org.xml.sax.SAXException
      */
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ShowReportView.class);
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParserConfigurationException, SAXException, JRException {
          response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
         response.setContentType("application/pdf");
-        String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        String reportFileName =pathActual+"reportVerPresupuestos.jasper";
+        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
+        //String reportFileName =pathActual+"reportVerPresupuestos.jasper";
         ServletOutputStream servletOutputStream =null;
         Long first =0L;
         Long last =0L;
@@ -104,12 +105,12 @@ public class ShowReportView extends HttpServlet {
                                             try {
                                                 Map map = new HashMap();
                                                 map.put("SUBREPORT_DIR","");
-                                                    bytes = JasperRunManager.runReportToPdf(reportFileName, map, xmlDataSource);
+                                                    bytes = JasperRunManager.runReportToPdf(Reportes.obtenerView(), map, xmlDataSource);
                                                     response.setContentType("application/pdf");
                                                     response.setContentLength(bytes.length);
                                                     servletOutputStream.write(bytes, 0, bytes.length);
                                                     servletOutputStream.flush();
-                                                    servletOutputStream.close();
+                                               
                                 } catch (JRException e) {
                                         // display stack trace in the browser
                                         StringWriter stringWriter = new StringWriter();
@@ -118,8 +119,8 @@ public class ShowReportView extends HttpServlet {
                                         response.setContentType("text/plain");
                                         response.getOutputStream().print(stringWriter.toString());
                                 }
-        } finally {
-                servletOutputStream.close();
+        } catch(NumberFormatException | IOException e){
+            logger.error(e.getLocalizedMessage());
         }
     }
 
@@ -137,11 +138,7 @@ public class ShowReportView extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JRException ex) {
+        } catch (ParserConfigurationException | SAXException | JRException ex) {
             Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -159,25 +156,8 @@ public class ShowReportView extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JRException ex) {
+        } catch (ParserConfigurationException | SAXException | JRException ex) {
             Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-   
-
 }
