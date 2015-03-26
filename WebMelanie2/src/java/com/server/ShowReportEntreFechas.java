@@ -10,12 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +33,7 @@ import org.xml.sax.SAXException;
  * @author Edgardo
  */
 public class ShowReportEntreFechas extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.100_8080/ServiceNotaPedido/NotaPedidoWs.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl")
     private ServiceNotaPedido service;
    
     /**
@@ -55,28 +51,18 @@ public class ShowReportEntreFechas extends HttpServlet {
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
         response.setContentType("application/pdf");
-        String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        String reportFileName =pathActual+"reportVerNotasEntreFechasCompra.jasper";
+        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
+        //String reportFileName =pathActual+"reportVerNotasEntreFechasCompra.jasper";
         ServletOutputStream servletOutputStream =null;
         String fecha1=null;
         String fecha2=null;
         int vendedor=0;
         java.lang.String result=null;
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            fecha1=request.getParameter("fstart");
-            fecha2=request.getParameter("fend");
-            vendedor=Integer.parseInt(request.getParameter("vendor"));
-            
-            try {
-                
-                Date parse1 = sdf.parse(fecha1);
-                Date parse2= sdf.parse(fecha2);
-            } catch (ParseException e) {
-               
-                logger.error("Error en el parseo de fechas "+e.getLocalizedMessage());
-            }
-            try { // Call Web Service Operation
+           
+            try { // Call Web Service Operation 
+                fecha1=request.getParameter("fstart");
+                fecha2=request.getParameter("fend");
                 
                 com.melani.ejb.NotaPedidoWs port = service.getNotaPedidoWsPort();
                 // TODO initialize WS operation arguments here
@@ -86,15 +72,16 @@ public class ShowReportEntreFechas extends HttpServlet {
                
                 logger.error("Error en servlet notas entre fechas "+ex.getLocalizedMessage());
             }
-            System.out.println("result "+result);
+            
+            
                             servletOutputStream=response.getOutputStream();
                                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                                 DocumentBuilder db =null;
                                 try {
                                         db = dbf.newDocumentBuilder();
                                     } catch (ParserConfigurationException ex) {
-                                       
-                                        java.util.logging.Logger.getLogger(ShowReportEntreFechas.class.getName()).log(Level.SEVERE, null, ex);
+                                       logger.error("Error de ParserConfigurationException en Servlet ShowReportEntreFechas");
+                                        
                                     }
                                 InputSource is = new InputSource();
                                     is.setCharacterStream(new StringReader(result));
@@ -103,8 +90,8 @@ public class ShowReportEntreFechas extends HttpServlet {
                                       try {
                                     doc = db.parse(is);
                                 } catch (SAXException ex) {
-                                   
-                                    java.util.logging.Logger.getLogger(ShowReportEntreFechas.class.getName()).log(Level.SEVERE, null, ex);
+                                   logger.error("Error de SAXException en Servlet ShowReportEntreFechas");
+                                    
                                 }
                             //----------------------------------------------------------------------------
                             //----------------------------------------------------------------------------
@@ -112,8 +99,8 @@ public class ShowReportEntreFechas extends HttpServlet {
                                             try {
                                                 xmlDataSource = new JRXmlDataSource(doc, "/Lista/item");
                                             } catch (JRException ex) {
-                                               
-                                                java.util.logging.Logger.getLogger(ShowReportEntreFechas.class.getName()).log(Level.SEVERE, null, ex);
+                                               logger.error("Error de JRException en Servlet ShowReportEntreFechas");
+                                                
                                             }
                             //----------------------------------------------------------------------------
                                              byte[] bytes = null;
@@ -121,12 +108,12 @@ public class ShowReportEntreFechas extends HttpServlet {
                                              try {
                                     Map map = new HashMap();
                                     map.put("SUBREPORT_DIR","");
-                                        bytes = JasperRunManager.runReportToPdf(reportFileName, map, xmlDataSource);
+                                        bytes = JasperRunManager.runReportToPdf(Reportes.obtenerEntreFechas(), map, xmlDataSource);
                                         response.setContentType("application/pdf");
                                         response.setContentLength(bytes.length);
                                         servletOutputStream.write(bytes, 0, bytes.length);
                                         servletOutputStream.flush();
-                                        servletOutputStream.close();
+                                        
                                 } catch (JRException e) {
                                         // display stack trace in the browser
                                        
@@ -138,17 +125,9 @@ public class ShowReportEntreFechas extends HttpServlet {
                                         logger.error(stringWriter.toString(), e);
                                 }
            //-------------------------------------------------------------------------------
-        }catch(IOException ex){
-           
+        }catch(IOException ex){           
             logger.error("Error en el Servlet ShowReportEntreFechasIO "+ex.getMessage());
-        } catch (NumberFormatException ex) {
-           
-            logger.error("Error en el Servlet ShowReportEntreFechasNF "+ex.getMessage());
-        } finally {
-           
-            
-            servletOutputStream.close();
-        }
+        } 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -174,15 +153,6 @@ public class ShowReportEntreFechas extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
-    }
-    /**
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    } 
     
 }

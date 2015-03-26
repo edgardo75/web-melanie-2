@@ -35,7 +35,7 @@ import org.xml.sax.SAXException;
  * @author Edgardo
  */
 public class ShowReportPresupuesto extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.100_8080/ServicesPresupuestos/PresupuestoWs.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl")
     private com.melani.ejb.ServicesPresupuestos service;
     
     
@@ -53,8 +53,8 @@ public class ShowReportPresupuesto extends HttpServlet {
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
         response.setContentType("application/pdf");
-        String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        String reportFileName =pathActual+"reportPresuEnd.jasper";
+        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
+        //String reportFileName =pathActual+"reportPresuEnd.jasper";
         ServletOutputStream servletOutputStream =null;
         String xml = "";
         String presnro="";
@@ -107,12 +107,12 @@ public class ShowReportPresupuesto extends HttpServlet {
                     try {          
                                     Map map = new HashMap();
                                     map.put("SUBREPORT_DIR","");
-                                    bytes = JasperRunManager.runReportToPdf(reportFileName, map, xmlDataSource);
+                                    bytes = JasperRunManager.runReportToPdf(Reportes.obtenerPresupuesto(), map, xmlDataSource);
                                     response.setContentType("application/pdf");
                                     response.setContentLength(bytes.length);
                                     servletOutputStream.write(bytes, 0, bytes.length);
                                     servletOutputStream.flush();
-                                    servletOutputStream.close();
+                                 
                     } catch (JRException e) {
                             // display stack trace in the browser
                             StringWriter stringWriter = new StringWriter();
@@ -125,9 +125,7 @@ public class ShowReportPresupuesto extends HttpServlet {
            //-------------------------------------------------------------------------------
         }catch(NullPointerException npe){
             logger.error("Error en el Servlet ShowReportPresupuesto "+npe.getMessage());
-            } finally {
-                      servletOutputStream.close();
-        }
+        } 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -164,14 +162,6 @@ public class ShowReportPresupuesto extends HttpServlet {
             java.util.logging.Logger.getLogger(ShowReportPresupuesto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    /**
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
     
 }

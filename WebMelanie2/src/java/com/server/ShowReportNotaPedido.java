@@ -35,7 +35,7 @@ import org.xml.sax.SAXException;
  * @author Edgardo
  */
 public class ShowReportNotaPedido extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.100_8080/ServiceNotaPedido/NotaPedidoWs.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl")
     private ServiceNotaPedido service;
     
     
@@ -54,8 +54,10 @@ public class ShowReportNotaPedido extends HttpServlet {
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
         response.setContentType("application/pdf");
-        String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        String reportFileName =pathActual+"reportNotaPedido.jasper";
+       // StringBuilder strPath = new StringBuilder(100);
+        
+        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
+        //String reportFileName =pathActual+"reportNotaPedido.jasper";
         ServletOutputStream servletOutputStream =null;
         String nronota="";
         Integer idnota =0;
@@ -108,12 +110,12 @@ public class ShowReportNotaPedido extends HttpServlet {
                              try {
                                     Map map = new HashMap();
                                     map.put("SUBREPORT_DIR","");
-                                        bytes = JasperRunManager.runReportToPdf(reportFileName, map, xmlDataSource);
+                                        bytes = JasperRunManager.runReportToPdf(Reportes.obtenerNotaPedido(), map, xmlDataSource);
                                         response.setContentType("application/pdf");
                                         response.setContentLength(bytes.length);
                                         servletOutputStream.write(bytes, 0, bytes.length);
                                         servletOutputStream.flush();
-                                        servletOutputStream.close();
+                                      
                                 } catch (JRException e) {
                                         // display stack trace in the browser
                           
@@ -125,15 +127,9 @@ public class ShowReportNotaPedido extends HttpServlet {
                                         logger.error(stringWriter.toString(), e);
                                 }
            //-------------------------------------------------------------------------------
-        }catch(IOException ex){
+        }catch(  IOException | NumberFormatException ex){
           
             logger.error("Error en el Servlet ShowreportNotaPedido "+ex.getMessage());
-        } catch (NumberFormatException ex) {
-          
-            logger.error("Error en el Servlet ShowreportNotaPedido "+ex.getMessage());
-        } finally {
-          
-            servletOutputStream.close();
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -160,15 +156,6 @@ public class ShowReportNotaPedido extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
-    }
-    /**
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    }  
    
 }
