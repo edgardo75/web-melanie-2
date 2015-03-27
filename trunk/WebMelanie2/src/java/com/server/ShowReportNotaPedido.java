@@ -6,7 +6,6 @@ package com.server;
 
 
 import com.melani.ejb.ServiceNotaPedido;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
@@ -53,11 +52,7 @@ public class ShowReportNotaPedido extends HttpServlet {
         response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
-        response.setContentType("application/pdf");
-       // StringBuilder strPath = new StringBuilder(100);
-        
-        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        //String reportFileName =pathActual+"reportNotaPedido.jasper";
+        response.setContentType("application/pdf");       
         ServletOutputStream servletOutputStream =null;
         String nronota="";
         Integer idnota =0;
