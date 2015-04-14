@@ -6,16 +6,14 @@
 
 package com.server;
 
+import utilities.Reportes;
 import com.melani.ejb.ServicesPresupuestos;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +27,8 @@ import javax.xml.ws.WebServiceRef;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
+import org.apache.log4j.Logger;
+
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -54,7 +54,7 @@ public class ShowReportView extends HttpServlet {
      * @throws net.sf.jasperreports.engine.JRException
      * @throws org.xml.sax.SAXException
      */
-    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ShowReportView.class);
+    private static final Logger logger = Logger.getLogger(ShowReportView.class);
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParserConfigurationException, SAXException, JRException {
          response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
@@ -139,7 +139,8 @@ public class ShowReportView extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParserConfigurationException | SAXException | JRException ex) {
-            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Error en Servlet ShowReportView");
+            
         }
     }
 
@@ -157,7 +158,7 @@ public class ShowReportView extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParserConfigurationException | SAXException | JRException ex) {
-            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Error en Servlet ShowReportView");
         }
     }
 }

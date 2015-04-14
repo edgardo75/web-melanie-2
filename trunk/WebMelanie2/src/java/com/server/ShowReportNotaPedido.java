@@ -5,6 +5,7 @@ package com.server;
  */
 
 
+import utilities.Reportes;
 import com.melani.ejb.ServiceNotaPedido;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +13,6 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +26,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import org.apache.log4j.Logger;
+
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -78,7 +79,7 @@ public class ShowReportNotaPedido extends HttpServlet {
                         db = dbf.newDocumentBuilder();
                     } catch (ParserConfigurationException ex) {
                
-                        java.util.logging.Logger.getLogger(ShowReportNotaPedido.class.getName()).log(Level.SEVERE, null, ex);
+                        logger.error("Error en Servlet ShowReportNotaPedido "+ex.getLocalizedMessage());
                     }
                      InputSource is = new InputSource();
                         is.setCharacterStream(new StringReader(result));
@@ -88,7 +89,7 @@ public class ShowReportNotaPedido extends HttpServlet {
                                     doc = db.parse(is);
                                 } catch (SAXException ex) {
            
-                                    java.util.logging.Logger.getLogger(ShowReportNotaPedido.class.getName()).log(Level.SEVERE, null, ex);
+                                    logger.error("Error en Servlet ShowReportNotaPedido "+ex.getLocalizedMessage());
                                 }
                             //----------------------------------------------------------------------------
                             //----------------------------------------------------------------------------
@@ -97,7 +98,7 @@ public class ShowReportNotaPedido extends HttpServlet {
                                 xmlDataSource = new JRXmlDataSource(doc, "/Lista");
                             } catch (JRException ex) {
                           
-                                java.util.logging.Logger.getLogger(ShowReportNotaPedido.class.getName()).log(Level.SEVERE, null, ex);
+                                logger.error("Error en Servlet ShowReportNotaPedido "+ex.getLocalizedMessage());
                             }
                             //----------------------------------------------------------------------------
                                 byte[] bytes = null;

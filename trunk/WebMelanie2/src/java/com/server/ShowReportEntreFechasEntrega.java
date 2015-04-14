@@ -3,15 +3,14 @@
  * and open the template in the editor.
  */
 package com.server;
+import utilities.Reportes;
 import com.melani.ejb.ServiceNotaPedido;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -68,6 +67,7 @@ public class ShowReportEntreFechasEntrega extends HttpServlet {
                result = port.selecNotaEntreFechasEntrega(fecha1, fecha2, vendedor);
             } catch (Exception ex) {
                 // TODO handle custom exceptions here
+                logger.error("Error en Servlet ShowReportEntreFechasEntrega "+ex.getLocalizedMessage());
             }
             
                             servletOutputStream=response.getOutputStream();
@@ -76,7 +76,7 @@ public class ShowReportEntreFechasEntrega extends HttpServlet {
                                 try {
                                         db = dbf.newDocumentBuilder();
                                     } catch (ParserConfigurationException ex) {
-                                        java.util.logging.Logger.getLogger(ShowReportEntreFechasEntrega.class.getName()).log(Level.SEVERE, null, ex);
+                                        logger.error("Error en Servlet ShowReportEntreFechasEntrega "+ex.getLocalizedMessage());
                                     }
                                 InputSource is = new InputSource();
                                     is.setCharacterStream(new StringReader(result));
@@ -85,7 +85,7 @@ public class ShowReportEntreFechasEntrega extends HttpServlet {
                                       try {
                                     doc = db.parse(is);
                                 } catch (SAXException ex) {
-                                    java.util.logging.Logger.getLogger(ShowReportEntreFechasEntrega.class.getName()).log(Level.SEVERE, null, ex);
+                                    logger.error("Error en Servlet ShowReportEntreFechasEntrega "+ex.getLocalizedMessage());
                                 }
                             //----------------------------------------------------------------------------
                             //----------------------------------------------------------------------------
@@ -93,7 +93,7 @@ public class ShowReportEntreFechasEntrega extends HttpServlet {
                                             try {
                                                 xmlDataSource = new JRXmlDataSource(doc, "/Lista/item");
                                             } catch (JRException ex) {
-                                                java.util.logging.Logger.getLogger(ShowReportEntreFechasEntrega.class.getName()).log(Level.SEVERE, null, ex);
+                                                logger.error("Error en Servlet ShowReportEntreFechasEntrega "+ex.getLocalizedMessage());
                                             }
                             //----------------------------------------------------------------------------
                                              byte[] bytes = null;

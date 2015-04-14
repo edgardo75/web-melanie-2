@@ -4,8 +4,8 @@
  */
 package com.server;
 
+import utilities.Reportes;
 import com.melani.ejb.ServiceNotaPedido;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
@@ -25,6 +25,8 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import org.apache.log4j.Logger;
+
+
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
