@@ -5,7 +5,7 @@
 package com.server;
 
 
-import java.io.File;
+import utilities.Reportes;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
@@ -13,7 +13,7 @@ import java.io.StringWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +27,8 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import org.apache.log4j.Logger;
+
+
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -52,9 +54,7 @@ public class ShowReportPresupuesto extends HttpServlet {
        response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
-        response.setContentType("application/pdf");
-        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        //String reportFileName =pathActual+"reportPresuEnd.jasper";
+        response.setContentType("application/pdf");        
         ServletOutputStream servletOutputStream =null;
         String xml = "";
         String presnro="";
@@ -71,6 +71,7 @@ public class ShowReportPresupuesto extends HttpServlet {
                     xml = port.showReportPresupuesto(idpresupuesto);                    
                 } catch (Exception ex) {
                     // TODO handle custom exceptions here
+                    logger.error("Error en Servlet ShowReportPresupuesto "+ex.getLocalizedMessage());
                 }                   
                
                
@@ -83,7 +84,7 @@ public class ShowReportPresupuesto extends HttpServlet {
                             try {              
                                 db = dbf.newDocumentBuilder();
                             } catch (ParserConfigurationException ex) {
-                                java.util.logging.Logger.getLogger(ShowReportPresupuesto.class.getName()).log(Level.SEVERE, null, ex);
+                                logger.error("Error en Servlet ShowReportPresupuesto "+ex.getLocalizedMessage());
                             }                    
                         InputSource is = new InputSource();                       
                         is.setCharacterStream(new StringReader(xml));                       
@@ -92,14 +93,14 @@ public class ShowReportPresupuesto extends HttpServlet {
                                 try {                       
                                     doc = db.parse(is);
                                 } catch (SAXException ex) {
-                                        java.util.logging.Logger.getLogger(ShowReportPresupuesto.class.getName()).log(Level.SEVERE, null, ex);
+                                        logger.error("Error en Servlet ShowReportPresupuesto "+ex.getLocalizedMessage());
                                 }
                             //----------------------------------------------------------------------------                            
                              JRXmlDataSource xmlDataSource = null;
                             try {                                
                                 xmlDataSource = new JRXmlDataSource(doc, "/Lista/Item");
                             } catch (JRException ex) {
-                                java.util.logging.Logger.getLogger(ShowReportPresupuesto.class.getName()).log(Level.SEVERE, null, ex);
+                                logger.error("Error en Servlet ShowReportPresupuesto "+ex.getLocalizedMessage());
                             }
                             //----------------------------------------------------------------------------
                                 byte[] bytes = null;
@@ -143,7 +144,7 @@ public class ShowReportPresupuesto extends HttpServlet {
         }catch(NullPointerException npe)    {
             logger.error("Error en Servlet ShowReportPresupuestos ",npe.getCause());
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(ShowReportPresupuesto.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Error en Servlet ShowReportPresupuesto "+ex.getMessage());
         }
     }
     /**
@@ -159,7 +160,8 @@ public class ShowReportPresupuesto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(ShowReportPresupuesto.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Error en Servlet ShowReportPresupuesto");
+            
         }
     }
 

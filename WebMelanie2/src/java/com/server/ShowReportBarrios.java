@@ -5,8 +5,8 @@
 package com.server;
 
 
+import utilities.Reportes;
 import com.melani.ejb.ServiceBarrios;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
@@ -28,6 +28,7 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
 
 /**
  *
