@@ -26,22 +26,6 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-PresupuestoWs" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" destdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServicesPresupuestos/PresupuestoWs?WSDL" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/PresupuestoWs">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-PresupuestoWs" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/com/melani/ejb"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
-    </target>
     <target name="wsimport-client-NotaPedidoWs" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/NotaPedidoWs"/>
         <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/NotaPedidoWs" destdir="${build.generated.dir}/jax-wsCache/NotaPedidoWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/NotaPedidoWs/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" xnocompile="true" xendorsed="true">
@@ -57,6 +41,22 @@
     <target name="wsimport-client-clean-NotaPedidoWs" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/com/melani/ejb"/>
         <delete dir="${build.generated.dir}/jax-wsCache/NotaPedidoWs"/>
+    </target>
+    <target name="wsimport-client-PresupuestoWs" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" destdir="${build.generated.dir}/jax-wsCache/PresupuestoWs" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServicesPresupuestos/PresupuestoWs?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/PresupuestoWs/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/PresupuestoWs">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-PresupuestoWs" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/melani/ejb"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/PresupuestoWs"/>
     </target>
     <target name="wsimport-client-BarriosWs" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/BarriosWs"/>
@@ -74,5 +74,5 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/com/melani/ejb"/>
         <delete dir="${build.generated.dir}/jax-wsCache/BarriosWs"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-PresupuestoWs, wsimport-client-NotaPedidoWs, wsimport-client-BarriosWs"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-NotaPedidoWs, wsimport-client-PresupuestoWs, wsimport-client-BarriosWs"/>
 </project>

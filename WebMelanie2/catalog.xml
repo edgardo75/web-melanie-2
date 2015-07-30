@@ -21,8 +21,8 @@
     <system systemId="http://192.168.1.100:8080/ServicesPresupuestos/PresupuestoWs?WSDL" uri="src/conf/xml-resources/web-service-references/PresupuestoWs/wsdl/192.168.1.100_8080/ServicesPresupuestos/PresupuestoWs.wsdl"/>
     <system systemId="http://192.168.1.100:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" uri="src/conf/xml-resources/web-service-references/NotaPedidoWs/wsdl/192.168.1.100_8080/ServiceNotaPedido/NotaPedidoWs.wsdl"/>
     <system systemId="http://192.168.1.100:8080/ServiceNotaPedido/NotaPedidoWs?xsd=1" uri="src/conf/xml-resources/web-service-references/NotaPedidoWs/wsdl/192.168.1.100_8080/ServiceNotaPedido/NotaPedidoWs.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" uri="src/conf/xml-resources/web-service-references/NotaPedidoWs/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl"/>
-    <system systemId="http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?xsd=1" uri="src/conf/xml-resources/web-service-references/NotaPedidoWs/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/ServicesPresupuestos/PresupuestoWs?WSDL" uri="src/conf/xml-resources/web-service-references/PresupuestoWs/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl"/>
     <system systemId="http://localhost:8080/ServiceBarrios/BarriosWs?WSDL" uri="src/conf/xml-resources/web-service-references/BarriosWs/wsdl/localhost_8080/ServiceBarrios/BarriosWs.wsdl"/>
+    <system systemId="http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" uri="src/conf/xml-resources/web-service-references/NotaPedidoWs/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl"/>
+    <system systemId="http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?xsd=1" uri="src/conf/xml-resources/web-service-references/NotaPedidoWs/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.xsd_1.xsd"/>
 </catalog>

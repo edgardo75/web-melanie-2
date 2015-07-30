@@ -5,8 +5,8 @@
 package com.server;
 
 
-import utilities.Reportes;
 import com.melani.ejb.ServiceBarrios;
+import utilities.Reportes;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
 public class ShowReportBarrios extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServiceBarrios/BarriosWs.wsdl")
     private ServiceBarrios service;
- 
+    
 
     /**
      * Processes requests for both HTTP
