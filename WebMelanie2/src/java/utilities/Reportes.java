@@ -13,44 +13,33 @@ import java.io.File;
  * @author win7
  */
 public class Reportes {
-
+    private static final String PATH = System.getProperty("user.dir")+File.separatorChar+"reports"+File.separatorChar;
     
    public static String obtenerNotaPedido() {
-        StringBuilder strPath = new StringBuilder(100);
-        return strPath.append(System.getProperty("user.dir")).append(File.separatorChar).append("reports").append(File.separatorChar).append("reportNotaPedido.jasper").toString();
+        
+        return PATH+"reportNotaPedido.jasper";
     }
 
    public static String obtenerTodosBarrios() {
-        StringBuilder strPath = new StringBuilder(100);
-        return strPath.append(System.getProperty("user.dir")).append(File.separatorChar).append("reports").append(File.separatorChar).append("reportAllBarrios.jasper").toString();
+        
+        return PATH+"reportAllBarrios.jasper";
     }
 
    public static String obtenerEntreFechas() {
-        StringBuilder strPath = new StringBuilder(100);
-        return strPath.append(System.getProperty("user.dir")).append(File.separatorChar).append("reports").append(File.separatorChar).append("reportVerNotasEntreFechasCompra.jasper").toString();
-        
+      return PATH+"reportVerNotasEntreFechasCompra.jasper";
         
     }
 
    public static String obtenerEntreFechasEntrega() {
-        StringBuilder strPath = new StringBuilder(100);
-        return strPath.append(System.getProperty("user.dir")).append(File.separatorChar).append("reports").append(File.separatorChar).append("reportVerNotasEntreFechasEntrega.jasper").toString();
-        
-        
-    }
+       return PATH+"reportVerNotasEntreFechasEntrega.jasper";
+   }
 
    public static String obtenerPresupuesto() {
-        StringBuilder strPath = new StringBuilder(100);
-        return strPath.append(System.getProperty("user.dir")).append(File.separatorChar).append("reports").append(File.separatorChar).append("reportPresuEnd.jasper").toString();
-        
-        
-    }
+        return PATH+"reportPresuEnd.jasper";
+   }
 
    public static String obtenerView() {
-       StringBuilder strPath = new StringBuilder(100);
-        return strPath.append(System.getProperty("user.dir")).append(File.separatorChar).append("reports").append(File.separatorChar).append("reportVerPresupuestos.jasper").toString();
-        
-
+       return PATH+"reportVerPresupuestos.jasper";
     }
     
     

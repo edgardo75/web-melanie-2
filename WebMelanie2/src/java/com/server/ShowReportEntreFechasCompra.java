@@ -25,8 +25,6 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import org.apache.log4j.Logger;
-
-
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -34,7 +32,7 @@ import org.xml.sax.SAXException;
  *
  * @author Edgardo
  */
-public class ShowReportEntreFechas extends HttpServlet {
+public class ShowReportEntreFechasCompra extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl")
     private ServiceNotaPedido service;
    
@@ -45,16 +43,14 @@ public class ShowReportEntreFechas extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private static final Logger logger = Logger.getLogger(ShowReportEntreFechas.class);
+    private static final Logger logger = Logger.getLogger(ShowReportEntreFechasCompra.class);
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
-        response.setContentType("application/pdf");
-        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        //String reportFileName =pathActual+"reportVerNotasEntreFechasCompra.jasper";
+        response.setContentType("application/pdf");        
         ServletOutputStream servletOutputStream =null;
         String fecha1=null;
         String fecha2=null;
@@ -69,7 +65,7 @@ public class ShowReportEntreFechas extends HttpServlet {
                 com.melani.ejb.NotaPedidoWs port = service.getNotaPedidoWsPort();
                 // TODO initialize WS operation arguments here
                 // TODO process result here
-               result = port.selectNotaEntreFechas(fecha1, fecha2, vendedor);
+               result = port.selectNotaEntreFechasCompra(fecha1, fecha2, vendedor);
             } catch (Exception ex) {
                
                 logger.error("Error en servlet notas entre fechas "+ex.getLocalizedMessage());

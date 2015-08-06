@@ -48,9 +48,7 @@ public class ShowReportEntreFechasEntrega extends HttpServlet {
         response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
-        response.setContentType("application/pdf");
-        //String pathActual = System.getProperty("user.dir") + File.separatorChar + "reports" + File.separatorChar;
-        //String reportFileName =pathActual+"reportVerNotasEntreFechasEntrega.jasper";
+        response.setContentType("application/pdf");        
         ServletOutputStream servletOutputStream =null;
         String fecha1;
         String fecha2;

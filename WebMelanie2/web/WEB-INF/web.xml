@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>ShowReportEntreFechas</servlet-name>
-        <servlet-class>com.server.ShowReportEntreFechas</servlet-class>
+        <servlet-class>com.server.ShowReportEntreFechasCompra</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShowReportBarrios</servlet-name>
