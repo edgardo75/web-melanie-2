@@ -67,6 +67,7 @@ public class ShowReportView extends HttpServlet {
         Long first =0L;
         Long last =0L;
         String xml = "";
+        Reportes reporte = new Reportes();
         try {
             first=Long.parseLong(request.getParameter("first"));
             last =Long.parseLong(request.getParameter("last"));
@@ -105,7 +106,7 @@ public class ShowReportView extends HttpServlet {
                                             try {
                                                 Map map = new HashMap();
                                                 map.put("SUBREPORT_DIR","");
-                                                    bytes = JasperRunManager.runReportToPdf(Reportes.obtenerView(), map, xmlDataSource);
+                                                    bytes = JasperRunManager.runReportToPdf(reporte.obtenerView(), map, xmlDataSource);
                                                     response.setContentType("application/pdf");
                                                     response.setContentLength(bytes.length);
                                                     servletOutputStream.write(bytes, 0, bytes.length);
