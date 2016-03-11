@@ -21,29 +21,22 @@ public class ShowReportPresupuesto extends HttpServlet {
         response.setDateHeader ("Expires", 0);
         response.setContentType("application/pdf");        
         ServletOutputStream servletOutputStream;
-        String xml = "";
+        String xml;
         String presnro;
         Integer idpresupuesto;
-        Reportes reporte = new Reportes();
-        try {            
+        Reportes reporte = new Reportes();        
                 presnro=request.getParameter("presnro");                
-                idpresupuesto=Integer.valueOf(presnro);
-                try {
+                idpresupuesto=Integer.valueOf(presnro);                
                     com.melani.ejb.PresupuestoWs port = service.getPresupuestoWsPort();                    
-                    xml = port.showReportPresupuesto(idpresupuesto);                    
-                } catch (Exception ex) {                 
-                    LOGGER.error("Error en Servlet ShowReportPresupuesto "+ex.getLocalizedMessage());
-                }
+                    xml = port.showReportPresupuesto(idpresupuesto); 
+                    System.out.println(xml);
                     servletOutputStream = response.getOutputStream();              
-                            Document doc = reporte.obtenerDocumentoParseado(xml);                            
-                                byte[] bytes = reporte.obtenerReporteJasper(doc, "/Lista/item",reporte.obtenerPresupuesto());                                             
+                            Document doc = reporte.obtenerDocumentoParseado(xml);                              
+                                byte[] bytes = reporte.obtenerReporteJasper(doc, "/Lista/Item",reporte.obtenerPresupuesto());                                             
                                 response.setContentType("application/pdf");
                                 response.setContentLength(bytes.length);
                                 servletOutputStream.write(bytes, 0, bytes.length);
-                                servletOutputStream.flush();           
-        }catch(NullPointerException npe){
-            LOGGER.error("Error en el Servlet ShowReportPresupuesto "+npe.getMessage());
-        }
+                                servletOutputStream.flush();                  
     }    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
