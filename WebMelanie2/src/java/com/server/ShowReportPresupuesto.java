@@ -28,8 +28,7 @@ public class ShowReportPresupuesto extends HttpServlet {
                 presnro=request.getParameter("presnro");                
                 idpresupuesto=Integer.valueOf(presnro);                
                     com.melani.ejb.PresupuestoWs port = service.getPresupuestoWsPort();                    
-                    xml = port.showReportPresupuesto(idpresupuesto); 
-                    System.out.println(xml);
+                    xml = port.showReportPresupuesto(idpresupuesto);                     
                     servletOutputStream = response.getOutputStream();              
                             Document doc = reporte.obtenerDocumentoParseado(xml);                              
                                 byte[] bytes = reporte.obtenerReporteJasper(doc, "/Lista/Item",reporte.obtenerPresupuesto());                                             
