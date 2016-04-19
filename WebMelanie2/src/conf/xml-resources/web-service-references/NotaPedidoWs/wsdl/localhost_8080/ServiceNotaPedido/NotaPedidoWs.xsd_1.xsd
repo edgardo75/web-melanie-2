@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://ejb.melani.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ejb.melani.com/">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://ejb.melani.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ejb.melani.com/">
 
 <xs:element name="actualizarNotaPedido" type="tns:actualizarNotaPedido"/>
 
@@ -32,10 +32,6 @@
 
 <xs:element name="getRecorCountNotasResponse" type="tns:getRecorCountNotasResponse"/>
 
-<xs:element name="selecNotaEntreFechasEntrega" type="tns:selecNotaEntreFechasEntrega"/>
-
-<xs:element name="selecNotaEntreFechasEntregaResponse" type="tns:selecNotaEntreFechasEntregaResponse"/>
-
 <xs:element name="selectAllNotas" type="tns:selectAllNotas"/>
 
 <xs:element name="selectAllNotasResponse" type="tns:selectAllNotasResponse"/>
@@ -43,6 +39,10 @@
 <xs:element name="selectNotaEntreFechasCompra" type="tns:selectNotaEntreFechasCompra"/>
 
 <xs:element name="selectNotaEntreFechasCompraResponse" type="tns:selectNotaEntreFechasCompraResponse"/>
+
+<xs:element name="selectNotaEntreFechasEntrega" type="tns:selectNotaEntreFechasEntrega"/>
+
+<xs:element name="selectNotaEntreFechasEntregaResponse" type="tns:selectNotaEntreFechasEntregaResponse"/>
 
 <xs:element name="selectUnaNota" type="tns:selectUnaNota"/>
 
@@ -54,9 +54,8 @@
 
 <xs:complexType name="entregarNotaPedido">
 <xs:sequence>
-<xs:element name="arg0" type="xs:long"/>
-<xs:element name="arg1" type="xs:long"/>
-<xs:element name="arg2" type="xs:int"/>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -76,24 +75,10 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="selecNotaEntreFechasEntrega">
-<xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0"/>
-<xs:element name="arg1" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="selecNotaEntreFechasEntregaResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="anularNotaPedido">
 <xs:sequence>
-<xs:element name="arg0" type="xs:long"/>
-<xs:element name="arg1" type="xs:long"/>
-<xs:element name="arg2" type="xs:int"/>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -107,7 +92,6 @@
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"/>
 <xs:element name="arg1" type="xs:string" minOccurs="0"/>
-<xs:element name="arg2" type="xs:long"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -126,6 +110,19 @@
 <xs:complexType name="agregarNotaPedidoResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectNotaEntreFechasEntrega">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectNotaEntreFechasEntregaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -153,9 +150,8 @@
 
 <xs:complexType name="cancelarNotaPedido">
 <xs:sequence>
-<xs:element name="arg0" type="xs:long"/>
-<xs:element name="arg1" type="xs:long"/>
-<xs:element name="arg2" type="xs:int"/>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -172,6 +168,19 @@
 </xs:complexType>
 
 <xs:complexType name="selectUnaNotaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verNotasPedidoPaginadas">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+<xs:element name="arg1" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verNotasPedidoPaginadasResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -197,19 +206,6 @@
 <xs:complexType name="getRecorCountNotasResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="verNotasPedidoPaginadas">
-<xs:sequence>
-<xs:element name="arg0" type="xs:int"/>
-<xs:element name="arg1" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="verNotasPedidoPaginadasResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

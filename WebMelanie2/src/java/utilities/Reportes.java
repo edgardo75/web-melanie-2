@@ -1,11 +1,11 @@
 package utilities;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -18,7 +18,8 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 public class Reportes {
-    private static final String PATH = System.getProperty("user.dir")+File.separatorChar+"reports"+File.separatorChar;    
+    private static final String PATH = ResourceBundle.getBundle("config").getString("PATH_REPORT");
+    
    public String obtenerNotaPedido() {        
         return PATH+"reportNotaPedido.jasper";
     }

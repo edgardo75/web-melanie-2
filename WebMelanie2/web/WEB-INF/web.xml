@@ -16,10 +16,6 @@
         <servlet-name>ShowReportPresupuesto</servlet-name>
         <servlet-class>com.server.ShowReportPresupuesto</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ShowReportEntreFechas</servlet-name>
-        <servlet-class>com.server.ShowReportEntreFechasCompra</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>ShowReportBarrios</servlet-name>
         <url-pattern>/ShowReportBarrios</url-pattern>
@@ -35,10 +31,6 @@
     <servlet-mapping>
         <servlet-name>ShowReportPresupuesto</servlet-name>
         <url-pattern>/ShowReportPresupuesto</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowReportEntreFechas</servlet-name>
-        <url-pattern>/ShowReportEntreFechas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
