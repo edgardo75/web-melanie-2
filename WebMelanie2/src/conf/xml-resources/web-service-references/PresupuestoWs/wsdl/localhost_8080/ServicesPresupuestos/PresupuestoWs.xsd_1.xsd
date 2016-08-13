@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://ejb.melani.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ejb.melani.com/">
+
+<xs:element name="ShowReportPresupuesto" type="tns:ShowReportPresupuesto"/>
+
+<xs:element name="ShowReportPresupuestoResponse" type="tns:ShowReportPresupuestoResponse"/>
+
+<xs:element name="ShowReportVerPresupuesto" type="tns:ShowReportVerPresupuesto"/>
+
+<xs:element name="ShowReportVerPresupuestoResponse" type="tns:ShowReportVerPresupuestoResponse"/>
+
+<xs:element name="addBudgets" type="tns:addBudgets"/>
+
+<xs:element name="addBudgetsResponse" type="tns:addBudgetsResponse"/>
+
+<xs:element name="getRecordCount" type="tns:getRecordCount"/>
+
+<xs:element name="getRecordCountResponse" type="tns:getRecordCountResponse"/>
+
+<xs:element name="searchOneBudget" type="tns:searchOneBudget"/>
+
+<xs:element name="searchOneBudgetResponse" type="tns:searchOneBudgetResponse"/>
+
+<xs:element name="selectAllPresupuestosJPA" type="tns:selectAllPresupuestosJPA"/>
+
+<xs:element name="selectAllPresupuestosJPAResponse" type="tns:selectAllPresupuestosJPAResponse"/>
+
+<xs:element name="verPresupuestosPaginados" type="tns:verPresupuestosPaginados"/>
+
+<xs:element name="verPresupuestosPaginadosResponse" type="tns:verPresupuestosPaginadosResponse"/>
+
+<xs:complexType name="ShowReportVerPresupuesto">
+<xs:sequence>
+<xs:element name="arg0" type="xs:long" minOccurs="0"/>
+<xs:element name="arg1" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ShowReportVerPresupuestoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addBudgets">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addBudgetsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ShowReportPresupuesto">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ShowReportPresupuestoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getRecordCount">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getRecordCountResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectAllPresupuestosJPA">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="selectAllPresupuestosJPAResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchOneBudget">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchOneBudgetResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verPresupuestosPaginados">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" minOccurs="0"/>
+<xs:element name="arg1" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verPresupuestosPaginadosResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
