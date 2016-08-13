@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?> <jboss-deployment-structure> <deployment> <dependencies> <module name="org.jboss.ironjacamar.jdbcadapters" slot="main"/> </dependencies> </deployment> </jboss-deployment-structure> - See more at: http://yuluer.com/page/dggbbije-classcastexception-in-between-equal-classes-wildfly-10.shtml#sthash.kptzkreP.dpuf

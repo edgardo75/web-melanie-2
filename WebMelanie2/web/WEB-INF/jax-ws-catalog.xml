@@ -25,4 +25,10 @@
     <system systemId="http://192.168.1.102:8080/ServiceBarrios/BarriosWs?xsd=1" uri="wsdl/192.168.1.102_8080/ServiceBarrios/BarriosWs.xsd_1.xsd"/>
     <system systemId="http://192.168.1.102:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" uri="wsdl/192.168.1.102_8080/ServiceNotaPedido/NotaPedidoWs.wsdl"/>
     <system systemId="http://192.168.1.102:8080/ServiceNotaPedido/NotaPedidoWs?xsd=1" uri="wsdl/192.168.1.102_8080/ServiceNotaPedido/NotaPedidoWs.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.101:8080/ServiceNotaPedido/NotaPedidoWs?WSDL" uri="wsdl/192.168.1.101_8080/ServiceNotaPedido/NotaPedidoWs.wsdl"/>
+    <system systemId="http://192.168.1.101:8080/ServiceNotaPedido/NotaPedidoWs?xsd=1" uri="wsdl/192.168.1.101_8080/ServiceNotaPedido/NotaPedidoWs.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.101:8080/ServicesPresupuestos/PresupuestoWs?WSDL" uri="wsdl/192.168.1.101_8080/ServicesPresupuestos/PresupuestoWs.wsdl"/>
+    <system systemId="http://192.168.1.101:8080/ServicesPresupuestos/PresupuestoWs?xsd=1" uri="wsdl/192.168.1.101_8080/ServicesPresupuestos/PresupuestoWs.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.101:8080/ServiceBarrios/BarriosWs?WSDL" uri="wsdl/192.168.1.101_8080/ServiceBarrios/BarriosWs.wsdl"/>
+    <system systemId="http://192.168.1.101:8080/ServiceBarrios/BarriosWs?xsd=1" uri="wsdl/192.168.1.101_8080/ServiceBarrios/BarriosWs.xsd_1.xsd"/>
 </catalog>

@@ -10,12 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import net.sf.jasperreports.engine.JRException;
-import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 public class ShowReportBarrios extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServiceBarrios/BarriosWs.wsdl")
-    private ServiceBarrios service;
-    private static final Logger LOGGER = Logger.getLogger(ShowReportBarrios.class);
+    private ServiceBarrios service;    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, JRException{
         response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
@@ -23,15 +21,10 @@ public class ShowReportBarrios extends HttpServlet {
         response.setDateHeader("Expires", 0);        
         response.setContentType("application/pdf");
         ServletOutputStream servletOutputStream;
-        String xml="";        
+        String xml;        
         Reportes reporte = new Reportes();
-        try {
-            try { 
-                com.melani.ejb.BarriosWs port = service.getBarriosWsPort();             
+               com.melani.ejb.BarriosWs port = service.getBarriosWsPort();             
                 xml = port.searchAllBarrios();                
-            } catch (Exception ex) {                
-                LOGGER.error("error en el servlet ShowReportBarrios "+ex.getLocalizedMessage());
-            }
                 servletOutputStream = response.getOutputStream();
                 Document doc = reporte.obtenerDocumentoParseado(xml);                       
                                  byte[] bytes = reporte.obtenerReporteJasper(doc, "/Lista/item",reporte.obtenerTodosBarrios());
@@ -39,10 +32,7 @@ public class ShowReportBarrios extends HttpServlet {
                                  response.setContentLength(bytes.length);
                                  servletOutputStream.write(bytes, 0, bytes.length);
                                  servletOutputStream.flush();
-        }catch(IOException e){
-            e.getLocalizedMessage();
-        } 
-    }
+      }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

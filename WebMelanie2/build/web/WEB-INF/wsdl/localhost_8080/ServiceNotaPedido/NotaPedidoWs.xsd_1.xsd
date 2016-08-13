@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://ejb.melani.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ejb.melani.com/">
+
+<xs:element name="actualizarNotaPedido" type="tns:actualizarNotaPedido"/>
+
+<xs:element name="actualizarNotaPedidoResponse" type="tns:actualizarNotaPedidoResponse"/>
+
+<xs:element name="agregarNotaPedido" type="tns:agregarNotaPedido"/>
+
+<xs:element name="agregarNotaPedidoResponse" type="tns:agregarNotaPedidoResponse"/>
+
+<xs:element name="anularNotaPedido" type="tns:anularNotaPedido"/>
+
+<xs:element name="anularNotaPedidoResponse" type="tns:anularNotaPedidoResponse"/>
+
+<xs:element name="calcularVentasMensualesHastaFechaYAnoActual" type="tns:calcularVentasMensualesHastaFechaYAnoActual"/>
+
+<xs:element name="calcularVentasMensualesHastaFechaYAnoActualResponse" type="tns:calcularVentasMensualesHastaFechaYAnoActualResponse"/>
+
+<xs:element name="cancelarNotaPedido" type="tns:cancelarNotaPedido"/>
+
+<xs:element name="cancelarNotaPedidoResponse" type="tns:cancelarNotaPedidoResponse"/>
+
+<xs:element name="eliminarNotaDePedido" type="tns:eliminarNotaDePedido"/>
+
+<xs:element name="eliminarNotaDePedidoResponse" type="tns:eliminarNotaDePedidoResponse"/>
+
+<xs:element name="entregarNotaPedido" type="tns:entregarNotaPedido"/>
+
+<xs:element name="entregarNotaPedidoResponse" type="tns:entregarNotaPedidoResponse"/>
+
+<xs:element name="getRecorCountNotas" type="tns:getRecorCountNotas"/>
+
+<xs:element name="getRecorCountNotasResponse" type="tns:getRecorCountNotasResponse"/>
+
+<xs:element name="selectAllNotas" type="tns:selectAllNotas"/>
+
+<xs:element name="selectAllNotasResponse" type="tns:selectAllNotasResponse"/>
+
+<xs:element name="selectNotaEntreFechasCompra" type="tns:selectNotaEntreFechasCompra"/>
+
+<xs:element name="selectNotaEntreFechasCompraResponse" type="tns:selectNotaEntreFechasCompraResponse"/>
+
+<xs:element name="selectNotaEntreFechasEntrega" type="tns:selectNotaEntreFechasEntrega"/>
+
+<xs:element name="selectNotaEntreFechasEntregaResponse" type="tns:selectNotaEntreFechasEntregaResponse"/>
+
+<xs:element name="selectUnaNota" type="tns:selectUnaNota"/>
+
+<xs:element name="selectUnaNotaResponse" type="tns:selectUnaNotaResponse"/>
+
+<xs:element name="verNotasPedidoPaginadas" type="tns:verNotasPedidoPaginadas"/>
+
+<xs:element name="verNotasPedidoPaginadasResponse" type="tns:verNotasPedidoPaginadasResponse"/>
+
+<xs:complexType name="entregarNotaPedido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="entregarNotaPedidoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectAllNotas">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="selectAllNotasResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anularNotaPedido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="anularNotaPedidoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectNotaEntreFechasCompra">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectNotaEntreFechasCompraResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarNotaPedido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarNotaPedidoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectNotaEntreFechasEntrega">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectNotaEntreFechasEntregaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="calcularVentasMensualesHastaFechaYAnoActual">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="calcularVentasMensualesHastaFechaYAnoActualResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarNotaPedido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarNotaPedidoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cancelarNotaPedido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cancelarNotaPedidoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectUnaNota">
+<xs:sequence>
+<xs:element name="arg0" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectUnaNotaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verNotasPedidoPaginadas">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+<xs:element name="arg1" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verNotasPedidoPaginadasResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarNotaDePedido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:long"/>
+<xs:element name="arg1" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarNotaDePedidoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getRecorCountNotas">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getRecorCountNotasResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

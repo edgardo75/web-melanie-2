@@ -8,12 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
-import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 public class ShowReportNotaPedido extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl")
-    private ServiceNotaPedido service;    
-    private static final Logger LOGGER = Logger.getLogger(ShowReportNotaPedido.class);    
+    private ServiceNotaPedido service;        
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
@@ -23,17 +21,12 @@ public class ShowReportNotaPedido extends HttpServlet {
         ServletOutputStream servletOutputStream;
         String nronota;
         Integer idnota;
-        String result="";
+        String result;
         Reportes reporte = new Reportes();
-        try {
             nronota=request.getParameter("nronota");
             idnota = Integer.valueOf(nronota);
-            try {
                 com.melani.ejb.NotaPedidoWs port = service.getNotaPedidoWsPort();                
                 result = port.selectUnaNota(idnota);
-            } catch (Exception ex) {           
-                LOGGER.error("Error al llamar la operacion del webservice!!! "+ex.getMessage());
-            }            
                             servletOutputStream=response.getOutputStream();
                                 Document doc = reporte.obtenerDocumentoParseado(result);
                                     byte[] bytes = reporte.obtenerReporteJasper(doc, "/Lista",reporte.obtenerNotaPedido());
@@ -41,9 +34,7 @@ public class ShowReportNotaPedido extends HttpServlet {
                                         response.setContentLength(bytes.length);
                                         servletOutputStream.write(bytes, 0, bytes.length);
                                         servletOutputStream.flush();
-        }catch(  IOException | NumberFormatException ex){          
-            LOGGER.error("Error en el Servlet ShowreportNotaPedido "+ex.getMessage());
-        }
+       
     }    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -2,6 +2,8 @@ package com.server;
 import utilities.Reportes;
 import com.melani.ejb.ServicesPresupuestos;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -11,14 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.ws.WebServiceRef;
 import net.sf.jasperreports.engine.JRException;
-import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 @WebServlet(name = "ShowReportView", urlPatterns = {"/ShowReportView"})
 public class ShowReportView extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl")
-    private ServicesPresupuestos service;
-    private static final Logger LOGGER = Logger.getLogger(ShowReportView.class);
+    private ServicesPresupuestos service;    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParserConfigurationException, SAXException, JRException {
          response.setHeader("Cache-Control","no-cache");  //Para evitar el cache
@@ -33,6 +33,7 @@ public class ShowReportView extends HttpServlet {
             first=Long.parseLong(request.getParameter("first"));
             last =Long.parseLong(request.getParameter("last"));
          com.melani.ejb.PresupuestoWs port = service.getPresupuestoWsPort();
+         
                 xml = port.showReportVerPresupuesto(first, last);
                 servletOutputStream = response.getOutputStream();
                 Document doc = reporte.obtenerDocumentoParseado(xml);                                                  
@@ -45,29 +46,30 @@ public class ShowReportView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         try {
             processRequest(request, response);
         } catch (ParserConfigurationException | SAXException | JRException ex) {
-            LOGGER.error("Error en Servlet ShowReportView");
-            
+            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         try {
             processRequest(request, response);
         } catch (ParserConfigurationException | SAXException | JRException ex) {
-            LOGGER.error("Error en Servlet ShowReportView");
+            Logger.getLogger(ShowReportView.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+    }
+
+    private String showReportVerPresupuesto(java.lang.Long arg0, java.lang.Long arg1) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.melani.ejb.PresupuestoWs port = service.getPresupuestoWsPort();
+        return port.showReportVerPresupuesto(arg0, arg1);
     }
 }

@@ -52,12 +52,4 @@ public class ShowReportEntreFechasCompra extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private String selectNotaEntreFechasCompra(java.lang.String arg0, java.lang.String arg1) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        com.melani.ejb.NotaPedidoWs port = service.getNotaPedidoWsPort();
-        return port.selectNotaEntreFechasCompra(arg0, arg1);
-    }
-
 }

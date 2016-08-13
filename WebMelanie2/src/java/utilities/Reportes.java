@@ -18,8 +18,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 public class Reportes {
-    private static final String PATH = ResourceBundle.getBundle("config").getString("PATH_REPORT");
-    
+    private static final String PATH = ResourceBundle.getBundle("config").getString("PATH_REPORT");    
    public String obtenerNotaPedido() {        
         return PATH+"reportNotaPedido.jasper";
     }
@@ -38,8 +37,7 @@ public class Reportes {
    public String obtenerView() {
        return PATH+"reportVerPresupuestos.jasper";
     }
-   public Document obtenerDocumentoParseado(String xml){
-            
+   public Document obtenerDocumentoParseado(String xml){            
        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                     DocumentBuilder db = null;
                      try {
@@ -54,8 +52,7 @@ public class Reportes {
                                     doc = db.parse(is);
                                 } catch (SAXException | IOException ex ) {
                                     Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-   
+                                }   
    return doc;
    }
    public byte [] obtenerReporteJasper(Document doc, String pathReporte,String nombreReporteJasper){

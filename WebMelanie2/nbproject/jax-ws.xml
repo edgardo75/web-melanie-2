@@ -4,8 +4,8 @@
   </services>
   <clients>
     <client name="NotaPedidoWs">
-      <wsdl-url>http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_8080/ServiceNotaPedido/NotaPedidoWs.wsdl</local-wsdl-file>
+      <wsdl-url>http://192.168.1.101:8080/ServiceNotaPedido/NotaPedidoWs?WSDL</wsdl-url>
+      <local-wsdl-file>192.168.1.101_8080/ServiceNotaPedido/NotaPedidoWs.wsdl</local-wsdl-file>
       <package-name>com.melani.ejb</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -23,7 +23,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/ServiceNotaPedido/NotaPedidoWs?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://192.168.1.101:8080/ServiceNotaPedido/NotaPedidoWs?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -36,8 +36,8 @@
       </wsimport-options>
     </client>
     <client name="PresupuestoWs">
-      <wsdl-url>http://localhost:8080/ServicesPresupuestos/PresupuestoWs?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_8080/ServicesPresupuestos/PresupuestoWs.wsdl</local-wsdl-file>
+      <wsdl-url>http://192.168.1.101:8080/ServicesPresupuestos/PresupuestoWs?WSDL</wsdl-url>
+      <local-wsdl-file>192.168.1.101_8080/ServicesPresupuestos/PresupuestoWs.wsdl</local-wsdl-file>
       <package-name>com.melani.ejb</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -55,7 +55,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/ServicesPresupuestos/PresupuestoWs?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://192.168.1.101:8080/ServicesPresupuestos/PresupuestoWs?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -68,8 +68,8 @@
       </wsimport-options>
     </client>
     <client name="BarriosWs">
-      <wsdl-url>http://localhost:8080/ServiceBarrios/BarriosWs?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_8080/ServiceBarrios/BarriosWs.wsdl</local-wsdl-file>
+      <wsdl-url>http://192.168.1.101:8080/ServiceBarrios/BarriosWs?WSDL</wsdl-url>
+      <local-wsdl-file>192.168.1.101_8080/ServiceBarrios/BarriosWs.wsdl</local-wsdl-file>
       <package-name>com.melani.ejb</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -87,7 +87,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/ServiceBarrios/BarriosWs?WSDL</wsimport-option-value>
+          <wsimport-option-value>http://192.168.1.101:8080/ServiceBarrios/BarriosWs?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
